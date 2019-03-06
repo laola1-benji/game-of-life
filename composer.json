@@ -1,6 +1,6 @@
 {
     "name": "laola1-benji/game-of-life",
-    "description": "Test",
+    "description": "Game of Life",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
