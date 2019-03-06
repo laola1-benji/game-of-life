@@ -5,6 +5,7 @@
  * Date: 06.03.2019
  * Time: 15:02
  */
+include_once("LifeForm.php");
 
 class Board
 {
@@ -27,23 +28,24 @@ class Board
             }
         }
     }
-    function displayBoard(){
+    public function displayBoard(){
         for($x = 0; $x <= $this->width; $x++) {
             for($y = 0; $y <= $this->height; $y++) {
                 echo $this->board[$x][$y];
             }
             echo "\n";
         }
-        echo "\n";echo "\n";
+        echo "\n\n";
     }
 
-    public function fillBoard($aliveCells){
+    public function fillBoard($formName){
+        $myLifeForm = new LifeForm($formName);
+        $aliveCells = $myLifeForm->getLifeForm();
         echo "Board populated with points: \n";
-        for($i = 0; $i<sizeof($aliveCells); $i++){
+        for($i = 0; $i<sizeof($aliveCells); $i++) {
             $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] = " X ";
-            echo $aliveCells[$i][0] . " " . $aliveCells[$i][1] ." ".$this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] . "\n";
+            echo $aliveCells[$i][0] . " " . $aliveCells[$i][1] . " " . $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] . "\n";
         }
-
     }
 
 }

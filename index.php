@@ -10,7 +10,8 @@
 
     //dead board
     $myBoard = new Board(9,9);
-    //IT'S ALIVE
-    $myLifeForm = new LifeForm("beacon");
-    $myBoard->fillBoard($myLifeForm->getLifeForm());
+    //IT'S ALIVE!!!!
+    $myBoard->fillBoard("beacon");
     $myBoard->displayBoard();
+    //use algorithm on the board
+
