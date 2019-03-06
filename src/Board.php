@@ -6,6 +6,7 @@
  * Time: 15:02
  */
 include_once("LifeForm.php");
+include_once("Rules/Referee.php");
 
 class Board
 {
@@ -46,6 +47,11 @@ class Board
             $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] = " X ";
             echo $aliveCells[$i][0] . " " . $aliveCells[$i][1] . " " . $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] . "\n";
         }
+    }
+
+    public function transformBoard(){
+        $rules = new Referee();
+        $rules->applyRules($this->board, $this->height);
     }
 
 }

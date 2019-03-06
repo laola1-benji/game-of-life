@@ -9,7 +9,8 @@
 class AliveRule implements iRule
 {
 
-    public function applyRule()
+
+    public function applyRule($board, $height, $boardOfNeighbours)
     {
         // TODO: Implement applyRule() method.
     }

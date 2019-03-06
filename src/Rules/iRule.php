@@ -8,5 +8,5 @@
 
 interface iRule
 {
-    public function applyRule();
+    public function applyRule($board, $height, $boardOfNeighbours);
 }
