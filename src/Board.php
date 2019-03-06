@@ -50,8 +50,8 @@ class Board
     }
 
     public function transformBoard(){
-        $rules = new Referee();
-        $rules->applyRules($this->board, $this->height);
+        $rules = new Referee($this->board, $this->height);
+        $this->board = $rules->applyRules();
     }
 
 }

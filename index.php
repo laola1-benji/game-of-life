@@ -14,4 +14,5 @@
     $myBoard->fillBoard("beacon");
     $myBoard->displayBoard();
     //use algorithm on the board
-
+    $myBoard->transformBoard();
+    $myBoard->displayBoard();

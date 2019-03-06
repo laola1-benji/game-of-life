@@ -10,16 +10,27 @@ require_once("RuleFactory.php");
 class Referee
 {
     private $boardOfNeighbours = [];
-    public function applyRules($board,$height){
-        for ($x = 0; $x <= sizeof($board); $x++) {
-            for ($y = 0; $y <= $height; $y++) {
-                $this->boardOfNeighbours[$x][$y] = $this->countNeighbours($board, $x, $y);
+    private $board = [];
+    private $height;
+
+    public function __construct($board, $height)
+    {
+        $this->board = $board;
+        $this->height = $height;
+    }
+
+    public function applyRules(){
+        for ($x = 0; $x < sizeof($this->board); $x++) {
+            for ($y = 0; $y <= $this->height; $y++) {
+                $this->boardOfNeighbours[$x][$y] = $this->countNeighbours($this->board, $x, $y);
             }
         }
-        $gameRules = new RuleFactory();
-        $gameRules->loadRule("kill", $board, $height, $this->boardOfNeighbours);
-        $gameRules->loadRule("revive", $board, $height, $this->boardOfNeighbours);
-        $gameRules->loadRule("keep", $board, $height, $this->boardOfNeighbours);
+        $gameRules = new RuleFactory($this->board, $this->height, $this->boardOfNeighbours);
+        $gameRules->loadRule("kill");
+        $gameRules->loadRule("revive");
+        $gameRules->loadRule("keep");
+        $this->board = $gameRules->getTransformedBoard();
+        return $this->board;
     }
 
     private function countNeighbours($board, $cellX, $cellY){

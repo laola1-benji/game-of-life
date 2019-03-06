@@ -5,24 +5,36 @@
  * Date: 06.03.2019
  * Time: 21:49
  */
+require_once("AliveRule.php");
+require_once("DeadRule.php");
+require_once("ReviveRule.php");
 
 class RuleFactory
 {
     private $transformedBoard = [];
-    public function loadRule($ruleName, $board, $height, $boardOfNeighbours){
+    private $height;
+    private $boardOfNeighbours;
+    function __construct($board, $height, $boardOfNeighbours)
+    {
+        $this->transformedBoard = $board;
+        $this->height = $height;
+        $this->boardOfNeighbours = $boardOfNeighbours;
+
+    }
+
+    public function loadRule($ruleName){
         if($ruleName == "kill"){
-            $transformedBoard = new DeadRule($board, $height, $boardOfNeighbours);
-            return $transformedBoard;
+            $this->transformedBoard = new DeadRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
         }
         if($ruleName == "keep"){
-            return $board;
+
         }
         if($ruleName == "revive"){
-            $transformedBoard = new DeadRule($board, $height, $boardOfNeighbours);
-            return $transformedBoard;
+            $this->transformedBoard = new DeadRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
         }
-
-
+    }
+    public function getTransformedBoard(){
+        return $this->transformedBoard;
     }
 
 }
