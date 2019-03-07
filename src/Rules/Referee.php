@@ -38,11 +38,8 @@ class Referee
         for($x = -1; $x <= 1; $x++){
             for($y = -1; $y <= 1; $y++){
                 if(isset($board[$x + $cellX][$y + $cellY]) && $board[$x + $cellX][$y + $cellY] == " X "){
-                    if($x == 0 && $y == 0 )
-                    {
-                        //dont count yourself
-                    }else{
-                    $neighbourCount++;
+                    if(!($x == 0 && $y == 0) ){
+                        $neighbourCount++;
                     }
                 }
             }
