@@ -11,5 +11,6 @@ spl_autoload_register(function ($class_name) {
 });
 
 $blinker = new Blinker();
-
-var_dump($blinker->board);
+Play::checkLivingNeighbors($blinker->board);
+Play::rules($blinker->board);
+var_dump($blinker->board[1][0]->livingNeighbors." / ".$blinker->board[1][0]->newStatus);

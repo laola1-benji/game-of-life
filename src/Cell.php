@@ -8,9 +8,12 @@
 
 class Cell{
     public $isAlive;
+    public $livingNeighbors;
+    public $newStatus;
 
     public function __construct($status){
         $this->isAlive = $status;
+        $this->livingNeighbors=0;
     }
 
     public function invertCell(){
