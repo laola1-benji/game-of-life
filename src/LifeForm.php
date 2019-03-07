@@ -10,10 +10,10 @@ class LifeForm
 {
     private $name;
     private $pointCoordinates = [];
+
     function __construct($name)
     {
         $this->name = $name;
-
         switch ($this->name){
             case "beehive" : $this->load($name);
             break;
@@ -26,8 +26,8 @@ class LifeForm
         return $this->pointCoordinates;
 
     }
-    private function load($name){
 
+    private function load($name){
         $filename = dirname(__DIR__) . '\lifeform\\' . $name . ".csv";
         echo "Loading file: " . $filename . "\n";
         if (($handle = fopen($filename, "r")) !== FALSE) {

@@ -13,11 +13,11 @@ class Board
     private $board = [];
     private $height;
     private $width;
+
     function __construct($width, $height)
     {
         $this->height = $height;
         $this->width = $width;
-
         $this->createBoard($this->width, $this->height);
         $this->displayBoard();
     }
@@ -51,8 +51,8 @@ class Board
     }
 
     public function transformBoard(){
-        $rules = new Referee($this->board, $this->height);
-        $this->board = $rules->applyRules();
+        $myRules = new Referee($this->board, $this->height);
+        $this->board = $myRules->RuleLoader();
         $this->displayBoard();
     }
 

@@ -14,19 +14,18 @@ class RuleFactory
     private $transformedBoard = [];
     private $height;
     private $boardOfNeighbours;
+
     function __construct($board, $height, $boardOfNeighbours)
     {
         $this->transformedBoard = $board;
         $this->height = $height;
         $this->boardOfNeighbours = $boardOfNeighbours;
-
     }
 
     public function loadRule($ruleName){
         if($ruleName == "kill"){
             $kill = new DeadRule();
             $this->transformedBoard = $kill->applyRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
-            echo "in here\n";
         }
         if($ruleName == "keep"){
             // board stays as it is.
@@ -36,6 +35,7 @@ class RuleFactory
             $this->transformedBoard = $revive->applyRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
         }
     }
+
     public function getTransformedBoard(){
         return $this->transformedBoard;
     }

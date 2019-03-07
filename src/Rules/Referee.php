@@ -19,7 +19,7 @@ class Referee
         $this->height = $height;
     }
 
-    public function applyRules(){
+    public function RuleLoader(){
         for ($x = 0; $x < sizeof($this->board); $x++) {
             for ($y = 0; $y <= $this->height; $y++) {
                 $this->boardOfNeighbours[$x][$y] = $this->countNeighbours($this->board, $x, $y);
