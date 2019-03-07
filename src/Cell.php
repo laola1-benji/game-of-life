@@ -1,4 +1,5 @@
 <?php
+
 namespace Ralph;
 
 class Cell
@@ -20,7 +21,7 @@ class Cell
         if ($this->isAlive === true) {
             echo " X ";
         } else {
-            echo " 0 ";
+            echo " . ";
         }
     }
 

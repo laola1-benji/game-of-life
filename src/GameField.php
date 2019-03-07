@@ -1,7 +1,10 @@
 <?php
+
 namespace Ralph;
 
 //require_once("Cell.php");
+
+use mysql_xdevapi\Exception;
 
 class GameField
 {
@@ -24,11 +27,11 @@ class GameField
 
     public function displayGameField()
     {
-        for ($i = 0; $i < 100; $i ++) {
-            if ($i % 10 == 0 && $i > 0) {
+        for ($f = 0; $f < 100; $f++) {
+            if ($f % 10 == 0 && $f > 0) {
                 echo "\n";
             }
-            $this->cellArray[$i]->displayCell();
+            $this->cellArray[$f]->displayCell();
         }
         echo "\n";
         echo "\n";
@@ -67,7 +70,7 @@ class GameField
             $this->lookUpDiagonalRight($position);
             $this->lookRight($position);
         } elseif ($type === "bottom-right") {
-            $this->lookDownDiagonalLeft($position);
+            $this->lookUp($position);
             $this->lookLeft($position);
             $this->lookUpDiagonalLeft($position);
         } elseif ($type === "bottom") {
@@ -92,63 +95,65 @@ class GameField
 
     private function lookUp($position)
     {
-        if ($this->cellArray[$position - 10]->isAlive) {
-            $this->cellArray[$position - 10]->incrementNeighborCount();
+        $lookPos = $position - 10;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
         }
     }
 
     private function lookUpDiagonalRight($position)
     {
-        if ($this->cellArray[$position - 9]->isAlive) {
-            $this->cellArray[$position - 9]->incrementNeighborCount();
+        $lookPos = $position - 9;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
         }
     }
 
     private function lookRight($position)
     {
-        if ($this->cellArray[$position + 1]->isAlive) {
-            $this->cellArray[$position + 1]->incrementNeighborCount();
+        $lookPos = $position + 1;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
         }
     }
 
     private function lookDownDiagonalRight($position)
     {
-        //if (isset($this->cellArray[$position + 11]->isAlive)) {
-            if ($this->cellArray[$position + 11]->isAlive) {
-                $this->cellArray[$position + 11]->incrementNeighborCount();
-            }
-        //}
+        $lookPos = $position + 11;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
+        }
     }
 
     private function lookDown($position)
     {
-       //if (isset($this->cellArray[$position + 11]->isAlive)) {
-            if ($this->cellArray[$position + 10]->isAlive) {
-                $this->cellArray[$position + 10]->incrementNeighborCount();
-            }
-        //}
+        $lookPos = $position + 10;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
+        }
     }
 
     private function lookDownDiagonalLeft($position)
     {
-        //if (isset($this->cellArray[$position + 11]->isAlive)) {
-            if ($this->cellArray[$position + 9]->isAlive) {
-                $this->cellArray[$position + 9]->incrementNeighborCount();
-            }
-        //}
+        $lookPos = $position + 9;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
+        }
     }
 
     private function lookLeft($position)
     {
-        if ($this->cellArray[$position - 1]->isAlive) {
-            $this->cellArray[$position - 1]->incrementNeighborCount();
+        $lookPos = $position - 1;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
         }
     }
 
     private function lookUpDiagonalLeft($position)
     {
-        if ($this->cellArray[$position - 11]->isAlive) {
-            $this->cellArray[$position - 11]->incrementNeighborCount();
+        $lookPos = $position - 11;
+        if ($this->cellArray[$lookPos]->isAlive === true) {
+            $this->cellArray[$position]->incrementNeighborCount();
         }
     }
 }

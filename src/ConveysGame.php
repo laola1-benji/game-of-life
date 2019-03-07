@@ -1,4 +1,5 @@
 <?php
+
 namespace Ralph;
 
 //require_once("GameField.php");
@@ -17,9 +18,11 @@ class ConveysGame
     function __construct()
     {
         $this->currentGame = new GameField();
+        $this->newGame = new GameField();
     }
 
     //methods
+    
     public function readUserInput()
     {
         $out1 = "Enter how many lives you want to revive: ";
@@ -33,10 +36,11 @@ class ConveysGame
             echo $out2;
             $this->chosenPositions[] = (int)readline($i + 1 . ". (0 - 99) : ");
         }
+
         $out3 = "How many generations should be iterated through? : ";
 
         echo $out3;
-        $this->chosenGenerations = (int)readline("How many generations should be iterated through? : ");
+        $this->chosenGenerations =(int)readline("How many generations should be iterated through? : ");
     }
 
     public function start()
@@ -54,7 +58,6 @@ class ConveysGame
 
     public function iterate()
     {
-        var_dump($this->chosenGenerations);
         for ($i = 0; $i < $this->chosenGenerations; $i++) {
             $this->transform();
             $this->currentGame->displayGameField();
@@ -63,31 +66,31 @@ class ConveysGame
 
     public function transform()
     {
-        for ($i = 0; $i < 100; $i++) {
-            $positionType = $this->getPositionType($i);
-            $this->currentGame->countNeighborsOfCell($i, $positionType);
+        for ($j = 0; $j < 100; $j++) {
+            $positionType = $this->getPositionType($j);
+            $this->currentGame->countNeighborsOfCell($j, $positionType);
         }
-        $this->newGame = $this->nextGeneration($this->currentGame);
-        $this->currentGame = $this->newGame;
+        $this->newGame = $this->nextGeneration($this->currentGame, $this->newGame);
+        $this->currentGame = $this->setAllNeighborToZero($this->newGame);
     }
 
-    private function nextGeneration(GameField $field)
+    private function nextGeneration(GameField $oldField, GameField $newField)
     {
-        $gameField = new GameField();
-
-        for ($i = 0; $i < 100; $i++) {
-            if ($this->currentGame->cellArray[$i]->isAlive === true) {
-                if (!($this->currentGame->cellArray[$i]->neighborCount === 2 || $this->currentGame->cellArray[$i]->neighborCount === 3)) {
-                    $gameField->cellArray[$i] = $field->cellArray[$i]->killCell();
+        for($cell = 0; $cell < 100; $cell++) {
+            if ($oldField->cellArray[$cell]->isAlive === false) {
+                if ($oldField->cellArray[$cell]->neighborCount === 3) {
+                    $newField->cellArray[$cell]->reviveCell();
                 }
             } else {
-                if (!($this->currentGame->cellArray[$i]->neighborCount === 3)) {
-                    $gameField->cellArray[$i] = $field->cellArray[$i]->reviveCell();
+                if ($oldField->cellArray[$cell]->neighborCount > 3 || $oldField->cellArray[$cell]->neighborCount < 2) {
+                    $newField->cellArray[$cell]->killCell();
+                } else{
+                    $newField->cellArray[$cell]->reviveCell();
                 }
             }
         }
 
-        return $gameField;
+        return $newField;
     }
 
     private function getPositionType($key)
@@ -104,7 +107,7 @@ class ConveysGame
             }
         } elseif ($key % 10 == 0 && $key !== 0 && $key !== 90) {   // links ohne Ecken //
             $positionType = "left";
-        } elseif ($key % 10 == 9) {                                // rechts ohne Ecken //
+        } elseif ($key % 10 == 9 && $key !== 99) {                 // rechts ohne Ecken //
             $positionType = "right";
         } elseif ($key > 89) {                                     // unten //
             if ($key === 90) {
@@ -117,8 +120,15 @@ class ConveysGame
                 $positionType = "not-in-board";
             }
         } else {
-            $positionType = "middle";                           // kein Rand
+            $positionType = "middle";                           // kein Rand //
         }
         return $positionType;
+    }
+
+    private function setAllNeighborToZero(GameField $gameField) {
+        foreach ($gameField->cellArray as $cell) {
+            $cell->neighborCount = 0;
+        }
+        return $gameField;
     }
 }

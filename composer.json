@@ -4,7 +4,9 @@
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "ext-readline": "*"
+    },
     "autoload": {
         "classmap":  [
             "src"
