@@ -6,6 +6,8 @@
  * Time: 13:29
  */
 
+namespace gameoflife;
+
 class Cell{
     public $isAlive;
     public $livingNeighbors;

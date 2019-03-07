@@ -6,9 +6,10 @@
  * Time: 13:35
  */
 
-spl_autoload_register(function ($class_name) {
-    include 'src/'.$class_name . '.php';
-});
+require "vendor/autoload.php";
+
+use gameoflife\Blinker;
+use gameoflife\Bipole;
 
 $blinker = new Blinker(3);
 $bipole = new Bipole(1);

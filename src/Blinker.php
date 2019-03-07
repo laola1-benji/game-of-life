@@ -6,6 +6,8 @@
  * Time: 14:32
  */
 
+namespace gameoflife;
+
 class Blinker extends Board{
 
     public function __construct($runCount){

@@ -6,6 +6,8 @@
  * Time: 07:24
  */
 
+namespace gameoflife;
+
 class Play{
 
     public static function checkLivingNeighbors($cellNeighbors){

@@ -6,6 +6,8 @@
  * Time: 15:14
  */
 
+namespace gameoflife;
+
 class Bipole extends Board{
 
     public function __construct($runCount){

@@ -6,6 +6,8 @@
  * Time: 13:17
  */
 
+namespace gameoflife;
+
 class Board
 {
     public $linesCount;
