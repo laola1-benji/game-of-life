@@ -10,7 +10,6 @@ spl_autoload_register(function ($class_name) {
     include 'src/'.$class_name . '.php';
 });
 
-$blinker = new Blinker();
-Play::checkLivingNeighbors($blinker->board);
-Play::rules($blinker->board);
-var_dump($blinker->board[1][0]->livingNeighbors." / ".$blinker->board[1][0]->newStatus);
+$blinker = new Blinker(3);
+$bipole = new Bipole(1);
+var_dump($bipole->board);

@@ -8,11 +8,14 @@
 
 class Blinker extends Board{
 
-    public function __construct(){
+    public function __construct($runCount){
         $this->linesCount = 3;
         $this->colsCount = 3;
         $this->initializeCells();
         $this->setLivingCells();
+        for($i=0;$i<$runCount;$i++){
+            $this->runBoardOneTime();
+        }
     }
 
     public function setLivingCells(){
@@ -23,7 +26,7 @@ class Blinker extends Board{
         ];
 
         foreach($this->livingCells as $cell){
-            $this->board[$cell['xPos']][$cell['yPos']]->invertCell();
+            $this->board[$cell['xPos']][$cell['yPos']]->isAlive=true;
         }
     }
 }

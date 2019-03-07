@@ -8,19 +8,19 @@
 
 class Play{
 
-    public static function checkLivingNeighbors($cellSurrounding){
+    public static function checkLivingNeighbors($cellNeighbors){
         $i=0;
-        foreach($cellSurrounding as $line){
+        foreach($cellNeighbors as $line){
             $j=0;
             foreach($line as $cell){
-                if(isset($cellSurrounding[$i-1][$j-1])&&$cellSurrounding[$i-1][$j-1]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i-1][$j])&&$cellSurrounding[$i-1][$j]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i-1][$j+1])&&$cellSurrounding[$i-1][$j+1]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i][$j-1])&&$cellSurrounding[$i][$j-1]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i][$j+1])&&$cellSurrounding[$i][$j+1]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i+1][$j-1])&&$cellSurrounding[$i+1][$j-1]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i+1][$j])&&$cellSurrounding[$i+1][$j]->isAlive===true)$cell->livingNeighbors++;
-                if(isset($cellSurrounding[$i+1][$j+1])&&$cellSurrounding[$i+1][$j+1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i-1][$j-1])&&$cellNeighbors[$i-1][$j-1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i-1][$j])&&$cellNeighbors[$i-1][$j]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i-1][$j+1])&&$cellNeighbors[$i-1][$j+1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i][$j-1])&&$cellNeighbors[$i][$j-1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i][$j+1])&&$cellNeighbors[$i][$j+1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i+1][$j-1])&&$cellNeighbors[$i+1][$j-1]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i+1][$j])&&$cellNeighbors[$i+1][$j]->isAlive===true)$cell->livingNeighbors++;
+                if(isset($cellNeighbors[$i+1][$j+1])&&$cellNeighbors[$i+1][$j+1]->isAlive===true)$cell->livingNeighbors++;
                 $j++;
             }
             $i++;

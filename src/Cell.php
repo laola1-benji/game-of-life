@@ -16,11 +16,8 @@ class Cell{
         $this->livingNeighbors=0;
     }
 
-    public function invertCell(){
-        if($this->isAlive === false){
-            $this->isAlive = true;
-        }else{
-            $this->isAlive = false;
-        }
+    public function setNewStatus(){
+        $this->isAlive=$this->newStatus;
     }
+
 }

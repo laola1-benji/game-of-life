@@ -17,9 +17,23 @@ class Board
         for($i = 0; $i < $this->linesCount; $i++){
             for($j = 0; $j < $this->colsCount; $j++){
                 $this->board[$i][$j]=new Cell(false);
+                $this->board[$i][$j]->newStatus=false;
             }
         }
     }
+
+    public function runBoardOneTime(){
+        Play::checkLivingNeighbors($this->board);
+        Play::rules($this->board);
+        foreach($this->board as $lines){
+            foreach($lines as $cell){
+                $cell->setNewStatus();
+                $cell->livingNeighbors=0;
+            }
+        }
+    }
+
+
 
 
 }
