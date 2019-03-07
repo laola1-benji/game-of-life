@@ -12,5 +12,5 @@ use gameoflife\Blinker;
 use gameoflife\Bipole;
 
 $blinker = new Blinker(3);
-$bipole = new Bipole(1);
+$bipole = new Bipole(2);
 var_dump($bipole->board);

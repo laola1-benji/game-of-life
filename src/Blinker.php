@@ -28,7 +28,7 @@ class Blinker extends Board{
         ];
 
         foreach($this->livingCells as $cell){
-            $this->board[$cell['xPos']][$cell['yPos']]->isAlive=true;
+            $this->board[$cell['xPos']][$cell['yPos']]->isAlive = true;
         }
     }
 }

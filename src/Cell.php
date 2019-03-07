@@ -13,13 +13,14 @@ class Cell{
     public $livingNeighbors;
     public $newStatus;
 
-    public function __construct($status){
-        $this->isAlive = $status;
-        $this->livingNeighbors=0;
+    public function __construct(){
+        $this->isAlive = false;
+        $this->newStatus = false;
+        $this->livingNeighbors = 0;
     }
 
     public function setNewStatus(){
-        $this->isAlive=$this->newStatus;
+        $this->isAlive = $this->newStatus;
     }
 
 }
