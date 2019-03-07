@@ -12,4 +12,4 @@ spl_autoload_register(function ($class_name) {
 
 $blinker = new Blinker();
 
-var_dump($blinker->field);
+var_dump($blinker->board);

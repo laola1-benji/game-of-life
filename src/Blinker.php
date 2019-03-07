@@ -6,12 +6,12 @@
  * Time: 14:32
  */
 
-class Blinker{
-    public $field;
-    public $livingCells;
+class Blinker extends Board{
 
     public function __construct(){
-        $this->field = new Board(3, 3);
+        $this->linesCount = 3;
+        $this->colsCount = 3;
+        $this->initializeCells();
         $this->setLivingCells();
     }
 
@@ -23,7 +23,7 @@ class Blinker{
         ];
 
         foreach($this->livingCells as $cell){
-            $this->field->field[$cell['xPos']][$cell['yPos']]->invertCell();
+            $this->board[$cell['xPos']][$cell['yPos']]->invertCell();
         }
     }
 }

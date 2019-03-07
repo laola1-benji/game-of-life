@@ -10,18 +10,13 @@ class Board
 {
     public $linesCount;
     public $colsCount;
-    public $field;
-
-    public function __construct($lines, $cols){
-        $this->linesCount = $lines;
-        $this->colsCount = $cols;
-        $this->initializeCells();
-    }
+    public $board;
+    public $livingCells;
 
     public function initializeCells(){
         for($i = 0; $i < $this->linesCount; $i++){
             for($j = 0; $j < $this->colsCount; $j++){
-                $this->field[$i][$j]=new Cell(false);
+                $this->board[$i][$j]=new Cell(false);
             }
         }
     }

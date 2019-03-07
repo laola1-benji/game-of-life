@@ -6,12 +6,12 @@
  * Time: 15:14
  */
 
-class Bipole{
-    public $field;
-    public $livingCells;
+class Bipole extends Board{
 
     public function __construct(){
-        $this->field = new Board(4, 4);
+        $this->linesCount = 4;
+        $this->colsCount = 4;
+        $this->initializeCells();
         $this->setLivingCells();
     }
 
@@ -28,7 +28,7 @@ class Bipole{
         ];
 
         foreach($this->livingCells as $cell){
-            $this->field->field[$cell['xPos']][$cell['yPos']]->invertCell();
+            $this->board[$cell['xPos']][$cell['yPos']]->invertCell();
         }
     }
 }
