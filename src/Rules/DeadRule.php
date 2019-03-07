@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 15:06
  */
-require_once ("iRule.php");
+namespace Rules;
 class DeadRule implements iRule
 {
     public function applyRule($board, $height, $boardOfNeighbours)

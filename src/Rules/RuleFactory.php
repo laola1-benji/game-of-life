@@ -5,10 +5,7 @@
  * Date: 06.03.2019
  * Time: 21:49
  */
-require_once("AliveRule.php");
-require_once("DeadRule.php");
-require_once("ReviveRule.php");
-
+namespace Rules;
 class RuleFactory
 {
     private $transformedBoard = [];

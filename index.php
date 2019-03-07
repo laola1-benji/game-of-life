@@ -5,8 +5,8 @@
  * Date: 06.03.2019
  * Time: 13:43
  */
-    include_once("src/Board.php");
-    include_once("src/LifeForm.php");
+    require("vendor/autoload.php");
+    use Source\Board;
 
     //dead board
     $myBoard = new Board(9,9);

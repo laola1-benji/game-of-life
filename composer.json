@@ -3,6 +3,21 @@
     "description": "Test",
     "type": "project",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "rubin-96",
+            "email": "rubin-96@hotmail.com"
+        }
+    ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "^7.1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\": "src/",
+            "Lifeform\\": "src/Lifeform",
+            "Rules\\": "src/Rules"
+        }
+    }
 }

@@ -5,6 +5,7 @@
  * Date: 06.03.2019
  * Time: 16:21
  */
+namespace Lifeform;
 
 class LifeForm
 {

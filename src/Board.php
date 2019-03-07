@@ -1,12 +1,13 @@
-<?php
+<?php namespace src;
 /**
  * Created by PhpStorm.
  * User: r.kallugjeri
  * Date: 06.03.2019
  * Time: 15:02
  */
-include_once("LifeForm.php");
-include_once("Rules/Referee.php");
+namespace Source;
+use Rules\Referee;
+use Lifeform\LifeForm;
 
 class Board
 {

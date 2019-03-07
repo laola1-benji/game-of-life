@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 15:39
  */
-require_once("RuleFactory.php");
+namespace Rules;
 
 class Referee
 {
