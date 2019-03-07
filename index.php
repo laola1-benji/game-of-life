@@ -12,7 +12,9 @@
     $myBoard = new Board(9,9);
     //IT'S ALIVE!!!!
     $myBoard->fillBoard("beacon");
-    $myBoard->displayBoard();
     //use algorithm on the board
-    $myBoard->transformBoard();
-    $myBoard->displayBoard();
+    while(true){
+        $myBoard->transformBoard();
+        sleep(3);
+    }
+

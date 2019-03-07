@@ -29,7 +29,7 @@ class Board
             }
         }
     }
-    public function displayBoard(){
+    private function displayBoard(){
         for($x = 0; $x <= $this->width; $x++) {
             for($y = 0; $y <= $this->height; $y++) {
                 echo $this->board[$x][$y];
@@ -47,11 +47,13 @@ class Board
             $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] = " X ";
             echo $aliveCells[$i][0] . " " . $aliveCells[$i][1] . " " . $this->board[$aliveCells[$i][0]][$aliveCells[$i][1]] . "\n";
         }
+        $this->displayBoard();
     }
 
     public function transformBoard(){
         $rules = new Referee($this->board, $this->height);
         $this->board = $rules->applyRules();
+        $this->displayBoard();
     }
 
 }

@@ -24,13 +24,16 @@ class RuleFactory
 
     public function loadRule($ruleName){
         if($ruleName == "kill"){
-            $this->transformedBoard = new DeadRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
+            $kill = new DeadRule();
+            $this->transformedBoard = $kill->applyRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
+            echo "in here\n";
         }
         if($ruleName == "keep"){
-
+            // board stays as it is.
         }
         if($ruleName == "revive"){
-            $this->transformedBoard = new DeadRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
+            $revive = new ReviveRule();
+            $this->transformedBoard = $revive->applyRule($this->transformedBoard, $this->height, $this->boardOfNeighbours);
         }
     }
     public function getTransformedBoard(){
