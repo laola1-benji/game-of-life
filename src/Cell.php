@@ -1,4 +1,5 @@
 <?php
+namespace Ralph;
 
 class Cell
 {
