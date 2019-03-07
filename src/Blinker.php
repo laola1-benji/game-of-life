@@ -20,7 +20,7 @@ class Blinker extends Board{
         }
     }
 
-    public function setLivingCells(){
+    private function setLivingCells(){
         $this->livingCells=[
             [ 'xPos' => 1, 'yPos' => 0],
             [ 'xPos' => 1, 'yPos' => 1],

@@ -20,7 +20,7 @@ class Bipole extends Board{
         }
     }
 
-    public function setLivingCells(){
+    private function setLivingCells(){
         $this->livingCells=[
             [ 'xPos' => 0, 'yPos' => 0],
             [ 'xPos' => 0, 'yPos' => 1],

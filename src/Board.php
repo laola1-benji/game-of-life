@@ -10,12 +10,12 @@ namespace gameoflife;
 
 class Board
 {
-    public $linesCount;
-    public $colsCount;
+    protected $linesCount;
+    protected $colsCount;
     public $board;
-    public $livingCells;
+    protected $livingCells;
 
-    public function initializeCells(){
+    protected function initializeCells(){
         for($i = 0; $i < $this->linesCount; $i++){
             for($j = 0; $j < $this->colsCount; $j++){
                 $this->board[$i][$j]=new Cell();
