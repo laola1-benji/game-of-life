@@ -15,9 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Source\\": "src/",
-            "Lifeform\\": "src/Lifeform",
-            "Rules\\": "src/Rules"
+            "GameOfLife\\": "src/"
         }
     }
 }

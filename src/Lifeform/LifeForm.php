@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 16:21
  */
-namespace Lifeform;
+namespace GameOfLife\LifeForm;
 
 class LifeForm
 {

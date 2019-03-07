@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 15:39
  */
-namespace Rules;
+namespace GameOfLife\Rules;
 
 class Referee
 {

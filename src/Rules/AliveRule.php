@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 15:06
  */
-namespace Rules;
+namespace GameOfLife\Rules;
 class AliveRule implements iRule
 {
     public function applyRule($board, $height, $boardOfNeighbours)

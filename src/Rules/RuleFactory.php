@@ -5,7 +5,7 @@
  * Date: 06.03.2019
  * Time: 21:49
  */
-namespace Rules;
+namespace GameOfLife\Rules;
 class RuleFactory
 {
     private $transformedBoard = [];

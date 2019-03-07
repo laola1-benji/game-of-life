@@ -5,9 +5,9 @@
  * Date: 06.03.2019
  * Time: 15:02
  */
-namespace Source;
-use Rules\Referee;
-use Lifeform\LifeForm;
+namespace GameOfLife;
+use GameOfLife\Rules\Referee;
+use GameOfLife\Lifeform\LifeForm;
 
 class Board
 {

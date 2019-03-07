@@ -6,7 +6,7 @@
  * Time: 13:43
  */
     require("vendor/autoload.php");
-    use Source\Board;
+    use GameOfLife\Board;
 
     //dead board
     $myBoard = new Board(9,9);
