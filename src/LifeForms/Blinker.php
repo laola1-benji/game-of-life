@@ -13,6 +13,8 @@ class Blinker extends LifeForm
 {
 
     public function __construct($x, $y){
+        $this->startingXPosition=$x;
+        $this->startingYPosition=$y;
         $this->declaringProperties();
         $this->generateForm();
         $this->activateCells();

@@ -11,6 +11,6 @@ use GameOfLife\Board;
 use GameOfLife\LifeForms\Blinker;
 
 $board = new Board();
+$blinker = new Blinker(0, 1);
+$board->addFormToBoard($blinker->area, $blinker->startingXPosition, $blinker->startingYPosition);
 $board->printBoard($board->board);
-
-$blinker = new Blinker(1, 1);

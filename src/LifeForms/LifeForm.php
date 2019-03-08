@@ -15,8 +15,11 @@ class LifeForm
 {
     public $width;
     public $height;
+    public $startingXPosition;
+    public $startingYPosition;
     public $livingCells;
     public $area;
+
 
     public function generateForm(){
         for($i=0; $i<$this->height; $i++){
