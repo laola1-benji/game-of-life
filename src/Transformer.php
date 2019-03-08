@@ -7,9 +7,7 @@
  */
 
 namespace GameOfLife;
-
-
-use GameOfLife\Rules\Lifeforms\LifeFormFactory;
+use GameOfLife\Lifeforms\LifeFormFactory;
 
 class Transformer
 {
@@ -22,12 +20,20 @@ class Transformer
     }
 
     public function loadLife(){
-        $factory = new LifeFormFactory();
-        $this->lifeCoordinates = $factory->getForm("beehive");
+        $factory = new LifeFormFactory($this->lifeCoordinates);
+        $this->lifeCoordinates = $factory->getForm("beacon");
         $this->transformBoard($this->board, $this->lifeCoordinates);
+
+        return $this->board;
     }
 
-    private function transformBoard(){
+    private function transformBoard($board, $lifeCoordinates){
+        //var_dump($lifeCoordinates);
+        //var_dump($board);
+        for($i = 0; $i<sizeof($lifeCoordinates); $i++) {
+            $cell = new Cell($$lifeCoordinates[$i][0], $$lifeCoordinates[$i][1], "X");
+            $board[$$lifeCoordinates[$i][0]][$$lifeCoordinates[$i][1]] = $cell;
+        }
 
     }
 }

@@ -6,26 +6,54 @@
  * Time: 14:28
  */
 
-namespace GameOfLife\Rules\Lifeforms;
-
+namespace GameOfLife\Lifeforms;
 
 class LifeFormFactory
 {
+    private $lifeCoordinates = [];
+    public function __construct($lifeCoordinates)
+    {
+        $this->lifeCoordinates = $lifeCoordinates;
+    }
+
     public function getForm($name)
     {
         switch ($name) {
             case "beehive" :
-                return new Beehive();
+                $this->load($name);
                 break;
             case "beacon" :
-                return new Beacon();
+                $this->load($name);
                 break;
             case "pulsar" :
-                return new Pulsar();
+                $this->load($name);
                 break;
             case "blinker" :
-                return new Blinker();
+                $this->load($name);
                 break;
+        }
+        return $this->lifeCoordinates;
+    }
+
+    private function load($name){
+        $filename = dirname(__DIR__) . '\resources\\' . $name . ".csv";
+        echo "Loading file: " . $filename . "\n";
+        if (($handle = fopen($filename, "r")) !== FALSE) {
+            while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $columns = count($row);
+                $xCoordinate = "";
+                $yCoordinate = "";
+                for ($c=0; $c < $columns; $c++) {
+                    if($c == 0){
+                        $xCoordinate = $row[$c];
+                    }
+                    if ($c == 1){
+                        $yCoordinate = $row[$c];
+                        array_push($this->lifeCoordinates, array($xCoordinate, $yCoordinate));
+                    }
+                }
+            }
+            fclose($handle);
         }
     }
 }

@@ -45,5 +45,6 @@ class Board
     public function fillBoard(){
         $lifeforms = new Transformer($this->board);
         $this->board = $lifeforms->loadLife();
+        $this->printBoard();
     }
 }
