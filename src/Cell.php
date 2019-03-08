@@ -7,16 +7,22 @@ class Cell
     public $status;
     public $statusMessage;
 
+    /**
+     * Cell constructor.
+     * @param $xPosition
+     * @param $yPosition
+     * @throws Exception
+     */
     public function __construct($xPosition, $yPosition)
     {
         $this->x = $xPosition;
         $this->y = $yPosition;
+        $this->getRandomStatus();
     }
 
     public function checkStatus($status)
     {
-        $this->statusMessage = $status ? "O" : "X";
-        //echo $this->statusMessage;
+        $this->statusMessage = $status ? "o" : "*";
     }
 
     /**
@@ -29,19 +35,41 @@ class Cell
         $this->checkStatus($this->status);
     }
 
-    public function checkLifeNeighbors($generation)
+    public function checkLifeNeighbors(Generation $generation)
     {
         $aliveNeighbors = 0;
 
-        for ($i = -1; $i < 2; $i++) {
-            for ($j = -1; $j < 2; $j++) {
+        for ($i = -1; $i < 1; $i++) {
+            for ($j = -1; $j < 1; $j++) {
                 $column = ($this->x + $i + Grid::$width) % Grid::$width;
                 $row = ($this->y + $j + Grid::$height) % Grid::$height;
-                $aliveNeighbors += $generation[$column][$row];
+
+                $aliveNeighbors += $generation->dna[$column][$row];
             }
         }
-        $aliveNeighbors -= $generation[$this->x][$this->y];
+        $aliveNeighbors -= $generation->dna[$this->x][$this->y];
         return $aliveNeighbors;
     }
-
+    /* public  function checkLifeNeighbors(Generation $generation,$x,$y) {
+         $lifeNeighbors = 0;
+         if($generation->dna[$x][$y -1] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x -1][$y] != 0) {
+             $lifeNeighbors += 1;
+         }
+         if($generation->dna[$x-1][$y+1] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x][$y-1] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x][$y+1] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x+1][$y-1] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x+1][$y] != 0) {
+             $lifeNeighbors += 1;
+         }if($generation->dna[$x+1][$y+1] != 0) {
+             $lifeNeighbors += 1;
+         }
+         return $lifeNeighbors;
+     }*/
 }

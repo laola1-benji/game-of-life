@@ -2,6 +2,6 @@
 
 class Generation
 {
-   public $generation = [];
-   public $cell = null;
+   public $dna = [];
+   public $cells = array(Cell::class);
 }

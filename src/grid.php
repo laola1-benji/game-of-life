@@ -6,10 +6,9 @@ class Grid
     public $nextGeneration;
     public $currentGeneration;
     public $rules;
+    public $isfFirstGeneration = false;
     public static $width = 10;
     public static $height = 10;
-
-    //public $resolution = 50;
 
     /**
      * Main constructor.
@@ -30,10 +29,13 @@ class Grid
      */
     function setupGrid()
     {
-        echo "Grid Setup \n";
         $this->createGeneration($this->firstGeneration, true);
         $this->createGeneration($this->nextGeneration);
+    }
 
+    public function Start()
+    {
+        $this->compareGenerations($this->nextGeneration);
     }
 
     /**
@@ -43,15 +45,16 @@ class Grid
      */
     function createGeneration(Generation $generation, $firstCreation = false)
     {
-        $generation->generation = $this->create2DArray(Grid::$width, Grid::$height);
+        $generation->dna = $this->create2DArray(Grid::$width, Grid::$height);
         for ($i = 0; $i < Grid::$height; $i++) {
+            echo "\n";
             for ($j = 0; $j < Grid::$width; $j++) {
+                $generation->cells = $this->create2DArray($i, $j);
                 $cell = new Cell($i, $j);
-                $generation->cell = $cell;
+                $generation->cells[$i][$j] = $cell;
+                //echo get_class($generation->cells[$i][$j]);
                 if ($firstCreation) {
-
-                    $cell->getRandomStatus();
-                    $this->currentGeneration->generation = $generation;
+                    $this->currentGeneration->dna = $generation->dna;
                     echo($cell->statusMessage);
 
                 } else {
@@ -63,23 +66,22 @@ class Grid
 
     /**
      * @param $generation
+     * @throws Exception
      */
     public function compareGenerations(Generation $generation)
     {
-
+        $this->checkForGeneration($generation);
         for ($i = 0; $i < Grid::$height; $i++) {
             for ($j = 0; $j < Grid::$width; $j++) {
-
-                $cell = $this->currentGeneration[$i][$j]->cell;
-               // $neighbors = $cell->checkLifeNeighbors($this->currentGeneration);
-               // $this->rules->checkForRules($neighbors,$cell->status);
+                $cell = new Cell($i, $j);;
+                $neighbors = $cell->checkLifeNeighbors($this->currentGeneration);
+                $this->rules->checkForRules($neighbors, $cell->status);
+                $this->currentGeneration->cells[$i][$j] = $cell;
                 echo $cell->statusMessage;
             }
         }
-        $this->currentGeneration = $generation;
+        sleep(1);
         $this->compareGenerations($generation);
-
-
     }
 
     function create2DArray($height, $width)
@@ -88,10 +90,21 @@ class Grid
 
         for ($i = 0; $i < count($array2D); $i++) {
             $array2D[$i] = array($width);
-
         }
-
         return $array2D;
+    }
+
+    function checkForGeneration(Generation $generation)
+    {
+        if ($this->isfFirstGeneration) {
+            $generation = $this->firstGeneration;
+            $this->currentGeneration = $this->nextGeneration;
+            $this->isfFirstGeneration = false;
+        } else {
+            $generation = $this->nextGeneration;
+            $this->currentGeneration = $this->firstGeneration;
+            $this->isfFirstGeneration = true;
+        }
     }
 
 
