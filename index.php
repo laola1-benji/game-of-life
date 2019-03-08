@@ -8,11 +8,9 @@
     require("vendor/autoload.php");
     use GameOfLife\Board;
 
-    //dead board
+
     $myBoard = new Board(9,9);
-    //IT'S ALIVE!!!!
     $myBoard->fillBoard("beacon");
-    //use algorithm on the board
     while(true){
         $myBoard->transformBoard();
         sleep(3);

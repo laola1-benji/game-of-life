@@ -15,6 +15,11 @@ class Board
     private $height;
     private $width;
 
+    /**
+     * Board constructor.
+     * @param int $width
+     * @param int $height
+     */
     function __construct($width, $height)
     {
         $this->height = $height;
@@ -23,6 +28,11 @@ class Board
         $this->displayBoard();
     }
 
+    /**
+     * Create empty board
+     * @param int $width
+     * @param int $height
+     */
     private function createBoard($width, $height){
         for($x = 0; $x <= $width; $x++) {
             for($y = 0; $y <= $height; $y++) {
@@ -30,6 +40,10 @@ class Board
             }
         }
     }
+
+    /**
+     * Display the board with the cell status
+     */
     private function displayBoard(){
         for($x = 0; $x <= $this->width; $x++) {
             for($y = 0; $y <= $this->height; $y++) {
@@ -40,6 +54,10 @@ class Board
         echo "\n\n";
     }
 
+    /**
+     * Create new instance of Lifeform and save it's values inside the board
+     * @param string $formName
+     */
     public function fillBoard($formName){
         $myLifeForm = new LifeForm($formName);
         $aliveCells = $myLifeForm->getLifeForm();
@@ -51,6 +69,9 @@ class Board
         $this->displayBoard();
     }
 
+    /**
+     * Transform board using the game rules
+     */
     public function transformBoard(){
         $myRules = new Referee($this->board, $this->height);
         $this->board = $myRules->RuleLoader();

@@ -8,6 +8,13 @@
 namespace GameOfLife\Rules;
 class DeadRule implements iRule
 {
+    /**
+     * Apply the kill rule by changing alive cells to the dead status
+     * @param array $board
+     * @param int $height
+     * @param array $boardOfNeighbours
+     * @return array|mixed
+     */
     public function applyRule($board, $height, $boardOfNeighbours)
     {
         // TODO: Implement applyRule() method.

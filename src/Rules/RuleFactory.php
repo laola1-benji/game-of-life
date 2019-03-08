@@ -12,6 +12,12 @@ class RuleFactory
     private $height;
     private $boardOfNeighbours;
 
+    /**
+     * RuleFactory constructor.
+     * @param array $board
+     * @param int $height
+     * @param array $boardOfNeighbours
+     */
     function __construct($board, $height, $boardOfNeighbours)
     {
         $this->transformedBoard = $board;
@@ -19,6 +25,10 @@ class RuleFactory
         $this->boardOfNeighbours = $boardOfNeighbours;
     }
 
+    /**
+     * Load all the rules of the game
+     * @param string $ruleName
+     */
     public function loadRule($ruleName){
         if($ruleName == "kill"){
             $kill = new DeadRule();
@@ -33,6 +43,10 @@ class RuleFactory
         }
     }
 
+    /**
+     * Return the final transformed board after the set of rules has each been applied once
+     * @return array
+     */
     public function getTransformedBoard(){
         return $this->transformedBoard;
     }

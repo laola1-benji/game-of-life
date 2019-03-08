@@ -13,12 +13,21 @@ class Referee
     private $board = [];
     private $height;
 
+    /**
+     * Referee constructor.
+     * @param array $board
+     * @param int $height
+     */
     public function __construct($board, $height)
     {
         $this->board = $board;
         $this->height = $height;
     }
 
+    /**
+     * Load all the rules the referee deems necessary for this game
+     * @return array
+     */
     public function RuleLoader(){
         for ($x = 0; $x < sizeof($this->board); $x++) {
             for ($y = 0; $y <= $this->height; $y++) {
@@ -33,6 +42,13 @@ class Referee
         return $this->board;
     }
 
+    /**
+     * Count the neighbours around a cell and return the number
+     * @param array $board
+     * @param int $cellX
+     * @param int $cellY
+     * @return int
+     */
     private function countNeighbours($board, $cellX, $cellY){
         $neighbourCount = 0;
         for($x = -1; $x <= 1; $x++){

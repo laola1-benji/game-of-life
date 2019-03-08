@@ -12,6 +12,10 @@ class LifeForm
     private $name;
     private $pointCoordinates = [];
 
+    /**
+     * LifeForm constructor.
+     * @param string $name
+     */
     function __construct($name)
     {
         $this->name = $name;
@@ -20,14 +24,23 @@ class LifeForm
             break;
             case "beacon" :$this->load($name);
             break;
+            case "pulsar" :$this->load($name);
+            break;
         }
     }
 
+    /**
+     * Return list of alive Points with its coordinates
+     * @return array
+     */
     public function getLifeForm(){
         return $this->pointCoordinates;
-
     }
 
+    /**
+     * Load a life form from the Lifeform directory and save it inside the array of point coordinates
+     * @param string $name
+     */
     private function load($name){
         $filename = dirname(__DIR__) . '\lifeform\\' . $name . ".csv";
         echo "Loading file: " . $filename . "\n";

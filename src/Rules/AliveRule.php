@@ -8,9 +8,15 @@
 namespace GameOfLife\Rules;
 class AliveRule implements iRule
 {
+    /**
+     * @param array $board
+     * @param array $height
+     * @param array $boardOfNeighbours
+     * @return array|mixed
+     */
     public function applyRule($board, $height, $boardOfNeighbours)
     {
         // TODO: Implement applyRule() method.
-        //dont do shiit, delete latter
+        return $board;
     }
 }
