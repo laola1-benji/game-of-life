@@ -58,7 +58,7 @@ class ConveysGame
 
     public function iterate()
     {
-        for ($i = 0; $i < $this->chosenGenerations; $i++) {
+        for ($year = 0; $year < $this->chosenGenerations; $year++) {
             $this->transform();
             $this->currentGame->displayGameField();
         }
@@ -66,7 +66,7 @@ class ConveysGame
 
     public function transform()
     {
-        for ($j = 0; $j < 100; $j++) {
+        for ($year = 0; $year < 100; $year++) {
             $positionType = $this->getPositionType($j);
             $this->currentGame->countNeighborsOfCell($j, $positionType);
         }

@@ -4,8 +4,6 @@ namespace Ralph;
 
 //require_once("Cell.php");
 
-use mysql_xdevapi\Exception;
-
 class GameField
 {
     //properties
