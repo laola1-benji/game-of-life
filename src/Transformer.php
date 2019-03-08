@@ -31,8 +31,7 @@ class Transformer
         //var_dump($lifeCoordinates);
         //var_dump($board);
         for($i = 0; $i<sizeof($lifeCoordinates); $i++) {
-            $cell = new Cell($$lifeCoordinates[$i][0], $$lifeCoordinates[$i][1], "X");
-            $board[$$lifeCoordinates[$i][0]][$$lifeCoordinates[$i][1]] = $cell;
+            ($board[$lifeCoordinates[$i][0]][$lifeCoordinates[$i][1]])->setStatus("X");
         }
 
     }
