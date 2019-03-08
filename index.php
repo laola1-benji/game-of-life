@@ -10,3 +10,4 @@ require ("vendor/autoload.php");
 use GameOfLife\Board;
 
 $board = new Board(9, 9);
+$board->fillBoard();
