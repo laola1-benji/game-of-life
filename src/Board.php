@@ -26,9 +26,9 @@ class Board
         }
     }
 
-    public function printBoard($board)
+    public function printBoard()
     {
-        foreach ($board as $line) {
+        foreach ($this->board as $line) {
             foreach ($line as $cell) {
                 if ($cell->status == true) {
                     echo "O";
@@ -41,12 +41,12 @@ class Board
     }
 
 
-    public function addFormToBoard($lifeForm, $xPosition, $yPosition){
+    public function addFormToBoard($lifeForm){
         $formLine=0;
-        for($i=$xPosition; $i<count($lifeForm); $i++){
+        for($i=$lifeForm->startingXPosition; $formLine<count($lifeForm->area); $i++) {
             $formCol=0;
-            for($j=$yPosition; $j<count($lifeForm[$formLine]); $j++){
-                $this->board[$i][$j]=$lifeForm[$formLine][$formCol];
+            for($j=$lifeForm->startingYPosition; $formCol<count($lifeForm->area[$formLine]); $j++) {
+                $this->board[$i][$j]=$lifeForm->area[$formLine][$formCol];
                 $formCol++;
             }
             $formLine++;
