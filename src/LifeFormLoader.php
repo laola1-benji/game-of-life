@@ -13,12 +13,23 @@ class LifeFormLoader
 {
     private $lifeCoordinates = [];
 
-    public function loadLife($lifeFormName,$startPoint, $board){
+    /**
+     * Load a life form into the board
+     * @param string $lifeFormName
+     * @param array $startPoint
+     * @param array $board
+     */
+    public function loadLife($lifeFormName, $startPoint, $board){
         $factory = new LifeFormCreator();
         $this->lifeCoordinates = $factory->getForm($lifeFormName, $startPoint);
         $this->transformBoard($board, $this->lifeCoordinates);
     }
 
+    /**
+     * Set the cells status to alive according to coordinates
+     * @param array $board
+     * @param array $lifeCoordinates
+     */
     private function transformBoard($board, $lifeCoordinates){
         for($i = 0; $i<sizeof($lifeCoordinates); $i++) {
             ($board[$lifeCoordinates[$i][0]][$lifeCoordinates[$i][1]])->setStatus("X");

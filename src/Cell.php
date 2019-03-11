@@ -16,6 +16,12 @@ class Cell
     private $y;
     private $status;
 
+    /**
+     * Cell constructor.
+     * @param int $x
+     * @param int $y
+     * @param string $status
+     */
     public function __construct($x, $y, $status = "O")
     {
         $this->x = $x;
@@ -23,9 +29,18 @@ class Cell
         $this->status = $status;
     }
 
+    /**
+     * get the status of specific cell
+     * @return string
+     */
     public function getStatus(){
         return $this->status;
     }
+
+    /**
+     * set the status of a specific cell
+     * @param string $status
+     */
     public function setStatus($status){
         $this->status = $status;
     }

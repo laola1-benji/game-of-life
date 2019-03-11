@@ -11,6 +11,10 @@ class Referee
 {
     private $boardOfNeighbours = [];
 
+    /**
+     * Count neighbours and load the rules you want to use for this game
+     * @param array $board
+     */
     public function applyAllRules($board){
         for ($x = 0; $x < sizeof($board); $x++) {
             for ($y = 0; $y <= Board::getHeight(); $y++) {

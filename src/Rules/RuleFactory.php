@@ -19,6 +19,11 @@ class RuleFactory
         $this->boardOfNeighbours = $boardOfNeighbours;
     }
 
+    /**
+     * Load specific rule needed for the game
+     * @param array $board
+     * @param string $ruleName
+     */
     public function loadRule($board, $ruleName){
         if($ruleName == "kill"){
             $kill = new DeadRule();
