@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: e.bukli
- * Date: 08/03/2019
- * Time: 14:26
+ * Date: 11/03/2019
+ * Time: 10:18
  */
 
 namespace GameOfLife\LifeForms;
 
 
-class Blinker extends LifeForm
+class Toad extends LifeForm
 {
     public function __construct($x, $y){
         $this->startingXPosition=$x;
@@ -20,13 +20,15 @@ class Blinker extends LifeForm
     }
 
     public function declaringProperties(){
-        $this->height = 1;
-        $this->width = 3;
+        $this->height = 2;
+        $this->width = 4;
         $this->livingCells=[
             ["xPosition" => 0, "yPosition" => 0],
             ["xPosition" => 0, "yPosition" => 1],
-            ["xPosition" => 0, "yPosition" => 2]
+            ["xPosition" => 0, "yPosition" => 2],
+            ["xPosition" => 1, "yPosition" => 1],
+            ["xPosition" => 1, "yPosition" => 2],
+            ["xPosition" => 1, "yPosition" => 3]
         ];
     }
-
 }

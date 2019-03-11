@@ -8,18 +8,15 @@
 
 require "vendor/autoload.php";
 use GameOfLife\Board;
+use GameOfLife\LifeForms\Toad;
 use GameOfLife\LifeForms\Blinker;
 
 $board = new Board();
-$blinker = new Blinker(8, 6);
-$blinker2 = new Blinker(2,3);
+$blinker = new Blinker(5, 6);
+$toad = new Toad(1,1);
 
 $board->addFormToBoard($blinker);
-$board->addFormToBoard($blinker2);
+$board->addFormToBoard($toad);
 $board->printBoard();
-var_dump('---------------');
-$board->runBoardOneTime();
-var_dump('---------------');
-$board->runBoardOneTime();
-var_dump('---------------');
-$board->runBoardOneTime();
+$board->runBoardXTimes(3);
+
