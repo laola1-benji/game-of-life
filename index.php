@@ -9,6 +9,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use GameOfLife\Board;
 
-$test = new Board();
-$test->getRawFileFromCsv();
+$blinker = "csv/Blinker.csv";
+
+$test = new Board($blinker);
 $test->displayGrid();

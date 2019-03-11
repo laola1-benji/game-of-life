@@ -9,5 +9,18 @@ namespace GameOfLife;
 
 class ConveysRules
 {
+    public $board;
 
+    public function __construct(IBoard $newBoard)
+    {
+        $this->board = $newBoard;
+    }
+
+    public function iterateOneGeneration() {
+
+    }
+
+    private function countNeighborsOfAllCells() {
+        //for ($i = 0; i < )
+    }
 }

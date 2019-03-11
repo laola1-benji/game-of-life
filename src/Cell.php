@@ -10,10 +10,11 @@ namespace GameOfLife;
 class Cell
 {
     public $isAlive;
+    public $neighbor;
 
     public function __construct($state)
     {
         $this->isAlive = $state;
+        $this->neighbor = 0;
     }
-
 }

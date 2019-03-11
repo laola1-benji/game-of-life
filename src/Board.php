@@ -11,21 +11,20 @@ class Board implements IBoard{
 
     public $fileName;
     public $filePath;
-    public $rawFile; // Bessere Idee?
     public $gridHeight;
     public $gridWidth;
     public $cells;
 
-    public function __construct()
+    public function __construct($file)
     {
         $this->cells = [];
-        $this->image = [];
-        //$this->filePath = __DIR__ . $filePath;
+        $this->filePath = $file;
+        $this->getRawFileFromCsv();
     }
 
     public function getRawFileFromCsv() {
         $counter = 0;
-        $openFile = fopen("src/Blinker.csv", "r");
+        $openFile = fopen($this->filePath, "r");
         while (!feof($openFile)) {
             if ($counter === 0) {
                 $this->fileName = fgets($openFile);
@@ -42,7 +41,6 @@ class Board implements IBoard{
                 if ($nextCharacter === 'X') {
                     $this->cells[] = new Cell(true);
                 }
-                //$this->cells->isAlive = str_split(fgets($openFile));
             }
             $counter++;
         }
@@ -50,20 +48,11 @@ class Board implements IBoard{
     }
 
     public function displayGrid() {
-//        foreach($this->cells as $cell) {
-//            if ($cell->isAlive === true) {
-//                echo 'X';
-//            }
-//            else {
-//                echo 'O';
-//            }
-//        }
-
         for ($i = 0; $i < sizeof($this->cells); $i++)  {
             if($i % $this->gridWidth == 0 && $i > 0) {
                 echo "\n";
             }
-            
+
             if ($this->cells[$i]->isAlive === true) {
                 echo 'X';
             }
