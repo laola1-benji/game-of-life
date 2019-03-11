@@ -8,8 +8,9 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 use GameOfLife\Board;
+use GameOfLife\ConveysRules;
 
-$blinker = "csv/Blinker.csv";
+$fileName = "csv/Blinker.csv";
 
-$test = new Board($blinker);
-$test->displayGrid();
+$blinker = new Board($fileName);
+$conveysGame = new ConveysRules($blinker);

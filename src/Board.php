@@ -14,6 +14,7 @@ class Board implements IBoard{
     public $gridHeight;
     public $gridWidth;
     public $cells;
+    public $numberOfCells;
 
     public function __construct($file)
     {
@@ -45,6 +46,7 @@ class Board implements IBoard{
             $counter++;
         }
         fclose($openFile);
+        $this->numberOfCells = sizeof($this->cells);
     }
 
     public function displayGrid() {

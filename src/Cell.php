@@ -17,4 +17,8 @@ class Cell
         $this->isAlive = $state;
         $this->neighbor = 0;
     }
+
+    public function incrementNeighbor() {
+        $this->neighbor++;
+    }
 }
