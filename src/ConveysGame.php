@@ -22,7 +22,6 @@ class ConveysGame
     }
 
     //methods
-    
     public function readUserInput()
     {
         $out1 = "Enter how many lives you want to revive: ";
@@ -66,7 +65,7 @@ class ConveysGame
 
     public function transform()
     {
-        for ($year = 0; $year < 100; $year++) {
+        for ($j = 0; $j < 100; $j++) {
             $positionType = $this->getPositionType($j);
             $this->currentGame->countNeighborsOfCell($j, $positionType);
         }
