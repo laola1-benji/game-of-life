@@ -55,6 +55,11 @@ class Board
 
     public function runBoardOneTime(){
         Rules::applyRules($this->board);
+        foreach ($this->board as $line) {
+            foreach ($line as $cell) {
+                $cell->setNewStatus();
+            }
+        }
         $this->printBoard();
     }
 }

@@ -9,12 +9,17 @@
 require "vendor/autoload.php";
 use GameOfLife\Board;
 use GameOfLife\LifeForms\Blinker;
-use GameOfLife\Rules;
 
 $board = new Board();
-$blinker = new Blinker(9, 6);
+$blinker = new Blinker(8, 6);
 $blinker2 = new Blinker(2,3);
 
 $board->addFormToBoard($blinker);
 $board->addFormToBoard($blinker2);
 $board->printBoard();
+var_dump('---------------');
+$board->runBoardOneTime();
+var_dump('---------------');
+$board->runBoardOneTime();
+var_dump('---------------');
+$board->runBoardOneTime();
