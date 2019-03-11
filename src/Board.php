@@ -52,4 +52,9 @@ class Board
             $formLine++;
         }
     }
+
+    public function runBoardOneTime(){
+        Rules::applyRules($this->board);
+        $this->printBoard();
+    }
 }

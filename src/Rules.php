@@ -9,5 +9,11 @@ namespace GameOfLife;
 
 class Rules
 {
-
+    public static function applyRules($board){
+        for($i=0;$i<count($board);$i++){
+            for($j=0; $j<count($board[$i]);$j++){
+                $board[$i][$j]->countLivingNeighbors($board, $i, $j);
+            }
+        }
+    }
 }
