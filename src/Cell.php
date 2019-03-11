@@ -11,9 +11,9 @@ class Cell
 {
     public $isAlive;
 
-    public function __construct()
+    public function __construct($state)
     {
-        $this->isAlive = "O";
+        $this->isAlive = $state;
     }
 
 }

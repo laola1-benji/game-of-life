@@ -10,6 +10,7 @@ namespace GameOfLife;
 class Board implements IBoard{
 
     public $fileName;
+    public $filePath;
     public $rawFile; // Bessere Idee?
     public $gridHeight;
     public $gridWidth;
@@ -18,12 +19,8 @@ class Board implements IBoard{
     public function __construct()
     {
         $this->cells = [];
-    }
-
-    public function initCells() {
-        foreach ($this->cells as $cell){
-            $cell = new Cell();
-        }
+        $this->image = [];
+        //$this->filePath = __DIR__ . $filePath;
     }
 
     public function getRawFileFromCsv() {
@@ -38,8 +35,13 @@ class Board implements IBoard{
                 $this->gridWidth = $tmp[0];
                 $this->gridHeight = $tmp[1];
             } else {
+                $nextCharacter = fgetc($openFile);
+                if ($nextCharacter === 'O')
+                    $this->cells[] = new Cell(false);
 
-                // TODO:
+                if ($nextCharacter === 'X') {
+                    $this->cells[] = new Cell(true);
+                }
                 //$this->cells->isAlive = str_split(fgets($openFile));
             }
             $counter++;
@@ -48,10 +50,27 @@ class Board implements IBoard{
     }
 
     public function displayGrid() {
-        echo "HALLOAHALALOADWLOWADLWALDOWAD";
-//        foreach ($this->cells as $cell) {
-//            echo $cell;
-//            echo "<br>";
+//        foreach($this->cells as $cell) {
+//            if ($cell->isAlive === true) {
+//                echo 'X';
+//            }
+//            else {
+//                echo 'O';
+//            }
 //        }
+
+        for ($i = 0; $i < sizeof($this->cells); $i++)  {
+            if($i % $this->gridWidth == 0 && $i > 0) {
+                echo "\n";
+            }
+            
+            if ($this->cells[$i]->isAlive === true) {
+                echo 'X';
+            }
+
+            if ($this->cells[$i]->isAlive === false) {
+                echo 'O';
+            }
+        }
     }
 }
