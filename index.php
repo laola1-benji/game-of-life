@@ -9,5 +9,9 @@
 require ("vendor/autoload.php");
 use GameOfLife\Board;
 
-$board = new Board(9, 9);
+$board = new Board(9, 10);
 $board->fillBoard();
+while(true){
+    $board->oneLifeCycle();
+    sleep(3);
+}

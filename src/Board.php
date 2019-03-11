@@ -9,10 +9,13 @@
 namespace GameOfLife;
 
 
+use GameOfLife\Referee;
+
 class Board
 {
     private $width;
     private $height;
+    private static $bHeight;
 
     private $board = [];
 
@@ -20,6 +23,7 @@ class Board
     {
         $this->height = $height;
         $this->width = $width;
+        self::$bHeight = $height;
         $this->createBoard();
     }
 
@@ -43,8 +47,18 @@ class Board
     }
 
     public function fillBoard(){
-        $lifeforms = new Transformer($this->board);
-        $this->board = $lifeforms->loadLife();
+        $lifeforms = new Transformer();
+        $lifeforms->loadLife($this->board);
         $this->printBoard();
+    }
+
+    public function oneLifeCycle(){
+        $lifeCycle = new Referee();
+        $lifeCycle->applyAllRules($this->board);
+        $this->printBoard();
+    }
+
+    public static function getHeight(){
+        return self::$bHeight;
     }
 }

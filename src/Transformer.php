@@ -7,32 +7,21 @@
  */
 
 namespace GameOfLife;
-use GameOfLife\Lifeforms\LifeFormFactory;
+use GameOfLife\Lifeforms\LifeFormCreator;
 
 class Transformer
 {
-    private $board = [];
     private $lifeCoordinates = [];
 
-    public function __construct($board)
-    {
-        $this->board = $board;
-    }
-
-    public function loadLife(){
-        $factory = new LifeFormFactory($this->lifeCoordinates);
+    public function loadLife($board){
+        $factory = new LifeFormCreator();
         $this->lifeCoordinates = $factory->getForm("beacon");
-        $this->transformBoard($this->board, $this->lifeCoordinates);
-
-        return $this->board;
+        $this->transformBoard($board, $this->lifeCoordinates);
     }
 
     private function transformBoard($board, $lifeCoordinates){
-        //var_dump($lifeCoordinates);
-        //var_dump($board);
         for($i = 0; $i<sizeof($lifeCoordinates); $i++) {
             ($board[$lifeCoordinates[$i][0]][$lifeCoordinates[$i][1]])->setStatus("X");
         }
-
     }
 }

@@ -8,13 +8,9 @@
 
 namespace GameOfLife\Lifeforms;
 
-class LifeFormFactory
+class LifeFormCreator
 {
     private $lifeCoordinates = [];
-    public function __construct($lifeCoordinates)
-    {
-        $this->lifeCoordinates = $lifeCoordinates;
-    }
 
     public function getForm($name)
     {
