@@ -10,13 +10,12 @@ require "vendor/autoload.php";
 use GameOfLife\Board;
 use GameOfLife\LifeForms\Toad;
 use GameOfLife\LifeForms\Blinker;
+use GameOfLife\LifeForms\Glider;
 
 $board = new Board();
-$blinker = new Blinker(5, 6);
-$toad = new Toad(1,1);
+$glider = new Glider(0, 0);
 
-$board->addFormToBoard($blinker);
-$board->addFormToBoard($toad);
+$board->addFormToBoard($glider);
 $board->printBoard();
-$board->runBoardXTimes(3);
+$board->runBoardXTimes(12);
 
