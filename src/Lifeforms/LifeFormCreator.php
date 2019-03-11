@@ -12,26 +12,26 @@ class LifeFormCreator
 {
     private $lifeCoordinates = [];
 
-    public function getForm($name)
+    public function getForm($name, $startPoint)
     {
         switch ($name) {
             case "beehive" :
-                $this->load($name);
+                $this->load($name, $startPoint);
                 break;
             case "beacon" :
-                $this->load($name);
+                $this->load($name, $startPoint);
                 break;
             case "pulsar" :
-                $this->load($name);
+                $this->load($name, $startPoint);
                 break;
             case "blinker" :
-                $this->load($name);
+                $this->load($name, $startPoint);
                 break;
         }
         return $this->lifeCoordinates;
     }
 
-    private function load($name){
+    private function load($name, $startPoint){
         $filename = dirname(__DIR__) . '\resources\\' . $name . ".csv";
         echo "Loading file: " . $filename . "\n";
         if (($handle = fopen($filename, "r")) !== FALSE) {
@@ -41,10 +41,10 @@ class LifeFormCreator
                 $yCoordinate = "";
                 for ($c=0; $c < $columns; $c++) {
                     if($c == 0){
-                        $xCoordinate = $row[$c];
+                        $xCoordinate = $startPoint[0] + $row[$c];
                     }
                     if ($c == 1){
-                        $yCoordinate = $row[$c];
+                        $yCoordinate =$startPoint[1] + $row[$c];
                         array_push($this->lifeCoordinates, array($xCoordinate, $yCoordinate));
                     }
                 }

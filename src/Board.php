@@ -46,9 +46,9 @@ class Board
         echo "\n\n";
     }
 
-    public function fillBoard(){
-        $lifeforms = new Transformer();
-        $lifeforms->loadLife($this->board);
+    public function fillBoard($lifeFormName, $startPoint){
+        $lifeforms = new LifeFormLoader();
+        $lifeforms->loadLife($lifeFormName, $startPoint, $this->board);
         $this->printBoard();
     }
 

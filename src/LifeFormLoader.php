@@ -9,13 +9,13 @@
 namespace GameOfLife;
 use GameOfLife\Lifeforms\LifeFormCreator;
 
-class Transformer
+class LifeFormLoader
 {
     private $lifeCoordinates = [];
 
-    public function loadLife($board){
+    public function loadLife($lifeFormName,$startPoint, $board){
         $factory = new LifeFormCreator();
-        $this->lifeCoordinates = $factory->getForm("beacon");
+        $this->lifeCoordinates = $factory->getForm($lifeFormName, $startPoint);
         $this->transformBoard($board, $this->lifeCoordinates);
     }
 

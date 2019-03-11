@@ -10,7 +10,7 @@ require ("vendor/autoload.php");
 use GameOfLife\Board;
 
 $board = new Board(9, 10);
-$board->fillBoard();
+$board->fillBoard("beacon", [0, 0]);
 while(true){
     $board->oneLifeCycle();
     sleep(3);
